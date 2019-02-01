@@ -1,0 +1,73 @@
+.App{
+    min-height: 500px;
+    width:100wh;
+    padding: 5px;
+    // outline: 1px solid black;
+    
+}
+.Container{
+  height: 80%;
+}
+
+
+
+.Navbar-wrap{
+    // outline: 1px solid red;
+    margin-top: 0;
+    height: 100%;
+    width:100%;
+  .Navbar{
+    width:90%;
+    height: 90%;
+    // outline: 1px solid yellow;
+  }
+}
+
+
+.Main-wrap{
+  // outline: 1px solid green;
+  height:100%;
+}
+.Page{
+  height:100%;
+}
+.Card-body{
+  padding: 10px;
+}
+
+
+.Footer-wrap{
+  // outline: 1px solid blue;
+  height: 70px;
+  .Footer{
+    &__list{
+      display:flex;
+    }
+  }
+}
+.OutlineRed{
+  outline: 2px dashed red;
+}
+.OutlineBlue{
+  outline: 2px dashed blue;
+}
+.FormControl__NewTypeExercise{
+  width: 100%;
+}
+
+.Select{
+  width: 90%;
+}
+
+.myExpansionPanel,
+.myExpansionPanelDetails,
+.myExpansionPanelDetailsListIn{
+  width: 100%;
+}
+
+.TitleOfPage{
+  padding: 15px;
+  background-color: #da5cf3;
+  border-radius: 5px;
+ 
+}

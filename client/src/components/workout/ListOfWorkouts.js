@@ -149,8 +149,7 @@ const uuidv1 = require('uuid/v1');
                 <Grid>
                   <Button 
                     component={Link} 
-                    to={`/new-workout/${this.props.match.params.time}`}
-                    // color="primary"
+                    to={`/new-workout/${this.props.match.params.time}`}                    
                     className={classNames(classes.root)}
                     variant="contained" >
                        Create workout
@@ -161,10 +160,11 @@ const uuidv1 = require('uuid/v1');
                   {displayWorks}
                 </Grid>
                 <Grid>
-                  <Button variant="contained" 
-                    // color="primary"
+                  <Button variant="contained"                   
                     className={classNames(classes.root)} 
-                    onClick={this.createTraining}>
+                    onClick={this.createTraining}
+                    disabled={this.props.works.length<1}
+                    >
                     Create training
                   </Button>                  
                 </Grid>

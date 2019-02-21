@@ -5,6 +5,7 @@ import { getAllExercisesTypes } from '../../actions/exerciseTypeActions';
 import { createOneWorkout } from '../../actions/workoutActions';
 import { setVisiblePage } from '../../actions/displayPageActions';
 
+
 import TitleOfPage from '../titleOfPage/TitleOfPage';
 import Header from '../header/Header';
 
@@ -40,7 +41,8 @@ const uuidv1 = require('uuid/v1');
     name_exercise:'',    
     repeats:'',
     quantity:'',
-    measure:''    
+    measure:'',
+    disabled:true    
    }
 
    componentWillMount(){
@@ -70,15 +72,19 @@ const uuidv1 = require('uuid/v1');
           this.setState({
             measure:''
           })
-        }     
+        }    
       
-    }
+    }   
+     
   }
-  componentWillReceiveProps(nextProps){
-   
-
-  }
+  
+  
   createWorkout = ()=>{ 
+    if(!(this.state.name_exercise && this.state.repeats && this.state.quantity)){
+      return;
+    }
+
+
     const findName = this.state.name_exercise; 
     const allExerc = this.props.typeExers;
     const link = `/list-of-workouts/${this.props.match.params.time}`;
@@ -121,10 +127,12 @@ const uuidv1 = require('uuid/v1');
               <Grid  className="Card-body NewWorkout-wrap" container direction="row" justify="space-between">
               <Grid item xs={4} >
                 <Select 
-                name="name_exercise"
+                name="name_exercise"                
                 onChange={this.onChange.bind(this)}
                 value={this.state.name_exercise}
-                className={classNames(classes.select)}
+                className={classNames(classes.select)
+                
+                }
                 >
                   <MenuItem value="0">Choose exercise</MenuItem>
                   {typeExers.map(item => (
@@ -139,10 +147,11 @@ const uuidv1 = require('uuid/v1');
               className="TextField"
               type="number" 
               placeholder="repeats" 
-              name="repeats"
-            
+              name="repeats"              
               value={this.state.repeats}
-              onChange={this.onChange.bind(this)}
+              onChange={this.onChange.bind(this)
+            
+              }
               /> 
             </Grid>
             <Grid item xs={2}>
@@ -153,16 +162,17 @@ const uuidv1 = require('uuid/v1');
                 placeholder="quantity"
                 name="quantity"            
                 value={this.state.quantity}
-                onChange={this.onChange.bind(this)}/>
+                onChange={this.onChange.bind(this)}                
+                />
             </Grid>
             <Grid item xs={2}>
               <Grid>{this.state.measure}</Grid>
             </Grid>
             <Grid item xs={2}>
-              <Button variant="contained" 
-                // color="primary"
+              <Button variant="contained"                
                 className={classNames(classes.root)} 
-                onClick={this.createWorkout}>
+                onClick={this.createWorkout}                
+                >
                 Create work
               </Button>            
             </Grid>

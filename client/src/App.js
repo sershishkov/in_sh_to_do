@@ -30,21 +30,25 @@ import './App.scss';
 
 import Grid from '@material-ui/core/Grid';
 
-
+import imgFitness from './components/img/Fitness2.jpeg';
 
 
 class App extends Component {
+  style ={
+    background:`url(${imgFitness}) no-repeat`,
+    backgroundSize: "cover"
+   }
   render() {
     return (
       <Provider store={store}>
         <Router> 
-          <Grid container  direction="column" justify="space-between"  className="App">
+          <Grid container  direction="column" justify="space-between"  className="App" style={this.style}>
             <Grid  item  container  direction="row" justify="space-between" alignItems="flex-start" className="Container" >
               <Grid item xs={3} container className="Navbar-wrap" direction="column" justify="flex-start" >
                 <Navbar item xs={12}/> 
               </Grid>
 
-              <Grid item xs={9}  className="Main-wrap">           
+              <Grid item xs={9}  className="Main-wrap" >           
                 <Route exact path="/" component={Landing} />  
                 <Route exact path="/sign-up" component={Register} />
                 <Route exact path="/sign-in" component={Login} />

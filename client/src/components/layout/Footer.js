@@ -23,12 +23,7 @@ import ListItem from '@material-ui/core/ListItem';
             </Button> 
           </ListItem>
           
-          <ListItem>            
-            <Button component={Link} to="/list-of-workouts/:time">
-              List of Workouts
-            </Button>
-          </ListItem>
-
+         
           <ListItem>            
             <Button component={Link} to="/list-of-training">
               List of Trainings

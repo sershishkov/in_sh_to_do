@@ -15,8 +15,6 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-// const uuidv1 = require('uuid/v1');
-
  class EditWorkoutsInTraining extends Component {
   state={ 
     name_exercise:'',    
@@ -105,8 +103,7 @@ import MenuItem from '@material-ui/core/MenuItem';
                         className="TextField"
                         type="number" 
                         placeholder="repeats" 
-                        name="repeats"
-                                             
+                        name="repeats"                                             
                         value={this.state.repeats}
                         onChange={this.onChange.bind(this)}
                         /> 

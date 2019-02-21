@@ -65,7 +65,7 @@ const styles = {
             Sign IN
           </Button>
         </ListItem>
-        <ListItem>
+        {/* <ListItem>
           <Button 
           component={Link} 
           to="/verify-email"           
@@ -73,7 +73,7 @@ const styles = {
            variant="contained">
             Verify Email
           </Button>
-        </ListItem>         
+        </ListItem>          */}
       </List>
     );
     const authLinks = (
@@ -109,7 +109,7 @@ const styles = {
             </Button>
           </ListItem>
 
-          <ListItem>
+          {/* <ListItem>
             <Button 
             component={Link} 
             to="/dashboard" 
@@ -117,7 +117,7 @@ const styles = {
             variant="contained">
                <i className="material-icons">reorder</i>{' '}Edit Types Exercise
             </Button>
-          </ListItem>
+          </ListItem> */}
 
         <ListItem>
           <Button 
@@ -128,8 +128,6 @@ const styles = {
            <i className="material-icons">reorder</i>{' '}New Types Exercise
           </Button>
         </ListItem>
-
-
           
           <ListItem>
             <Button 
@@ -139,21 +137,8 @@ const styles = {
             variant="contained">
                <i className="material-icons">reorder</i>{' '}Create Training
             </Button>
-          </ListItem>
-          
-          {/* <ListItem>
-            <Button component={Link} to={`"/new-workout/:time"`} color={displayPage === "NewWorkout"? "primary":"secondary"} variant="contained">
-              New Workout
-            </Button>
-          </ListItem> */}
+          </ListItem> 
 
-          {/* <ListItem>
-            <Button component={Link} to={`/edit-workout/:id_work/:time`} color={displayPage === "EditWorkout"? "primary":""} variant="contained">
-              Edit Workout
-            </Button>
-          </ListItem> */}
-
-          
           <ListItem>
             <Button 
             component={Link} 
@@ -163,34 +148,7 @@ const styles = {
               <i className="material-icons">reorder</i>{' '}List of Trainings
             </Button>
           </ListItem>
-
-          <ListItem>
-            <Button 
-            component={Link} 
-            to="/list-of-training"
-            className= {displayPage === "CreateWorkoutsInTraining"? classNames(classes.activePage):classNames(classes.root)} 
-            variant="contained">
-              <i className="material-icons">reorder</i>{' '}Create Work in tr
-            </Button>
-          </ListItem>
-
-          <ListItem>
-            <Button 
-            component={Link} 
-            to="/dashboard"           
-            className= {displayPage === "EditTrainig"? classNames(classes.activePage):classNames(classes.root)}  
-            variant="contained">
-             <i className="material-icons">reorder</i>{' '}Edit Train
-            </Button>
-          </ListItem>
-
-          {/* <ListItem>
-            <Button component={Link} to="/edit-workout-in-training/:id_work/:id_train" color={displayPage === "EditWorkoutsInTraining"? "primary":"secondary"} variant="contained">
-            Edit Work in train
-            </Button>
-          </ListItem>        */}
           
-
           <ListItem>
             <Button 
             component={Link} 

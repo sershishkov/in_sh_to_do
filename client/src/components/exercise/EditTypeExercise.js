@@ -117,8 +117,7 @@ const styles = {
                 <FormHelperText>Choose measuerement</FormHelperText>                
               </Grid>
               <Grid item xs={4}>
-                <Button variant="contained" 
-                  // color="primary"
+                <Button variant="contained"                  
                   className={classNames(classes.root)} 
                   onClick={this.onSubmit}>
                   Edit Exercise

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import {getAllTrainigs, deleteOneTrainig} from '../../actions/trainigAction';
+import { getWorksInTraining } from '../../actions/workoutActions';
 import { setVisiblePage } from '../../actions/displayPageActions';
 
 import TitleOfPage from '../titleOfPage/TitleOfPage';
@@ -17,9 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
  class ListOfTrainings extends Component {
@@ -44,7 +43,9 @@ componentDidMount(){
 deleteTrainig = (id) =>{
   this.props.deleteOneTrainig(id);
 }
-
+getWorksIntrain= (id)=>{
+  this.props.getWorksInTraining(id); 
+}
 
 
   render() {
@@ -57,13 +58,15 @@ deleteTrainig = (id) =>{
           <ListItem key={trainig._id} >
             <ExpansionPanel expanded={expanded === `panel${i}`} onChange={this.handleChange(`panel${i}`)} className=" myExpansionPanel">
                   <ExpansionPanelSummary 
-                  // expandIcon={<ExpandMoreIcon />}
+                  expandIcon={<ExpandMoreIcon />}
                    >
                     <Grid  container direction="row" justify="space-between">
                       <Grid item xs={3}>Training # {i+1}{' '}</Grid>
                       <Grid item xs={3}> Date:{' '}{moment(trainig.data_work).format('DD MM YYYY')}</Grid>
                       <Grid item xs={3}>
-                        <Button component={Link} to={`/edit-trainig/${trainig._id}`} color="primary" variant="contained">
+                        <Button component={Link} 
+                        to={`/edit-trainig/${trainig._id}`} color="primary"
+                         variant="contained" onClick={()=>this.getWorksIntrain(trainig._id)}>
                         <i className="material-icons">border_color</i> train
                       </Button>
                       </Grid>
@@ -82,7 +85,7 @@ deleteTrainig = (id) =>{
   
                             return(
                                 <ListItem key={typeExer._id}> 
-                                <Grid container direction="row" justify="flex-between">                       
+                                <Grid container direction="row" justify="space-between">                       
                                   <Grid item xs={3}>{typeExer.exercise_ID.name_exercise}{' '}</Grid>
                                   <Grid item xs={3}>{typeExer.exercise_ID.meauserement}{' '}</Grid>
                                   <Grid item xs={3}>Repeats:{typeExer.repeats}{' '}</Grid>
@@ -133,6 +136,7 @@ ListOfTrainings.propTypes ={
   trainigs:PropTypes.array.isRequired,
   getAllTrainigs:PropTypes.func.isRequired,
   deleteOneTrainig:PropTypes.func.isRequired,
+  getWorksInTraining:PropTypes.func.isRequired,
 
   setVisiblePage: PropTypes.func.isRequired,
   displayPage:PropTypes.string.isRequired
@@ -142,8 +146,9 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     trainigs: state.trainigs.trainigs,   
-    displayPage:state.displayPage.displayPage
+    displayPage:state.displayPage.displayPage,
+    oneTrainig:state.trainigs.oneTrainig
   }
 }
 
-export default connect(mapStateToProps, {getAllTrainigs, deleteOneTrainig, setVisiblePage}) (ListOfTrainings);
+export default connect(mapStateToProps, {getAllTrainigs, deleteOneTrainig, setVisiblePage, getWorksInTraining}) (ListOfTrainings);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {getAllTrainigs} from '../../actions/trainigAction';
+import { getWorksInTraining } from '../../actions/workoutActions';
 import { setVisiblePage } from '../../actions/displayPageActions';
 
 import InfiniteCalendar, {
@@ -29,7 +30,9 @@ import Card from '@material-ui/core/Card';
     })
 
   if(filteredTrain.length>0){
-    this.props.history.push(`/edit-trainig/${filteredTrain[0]._id}`)
+    this.props.history.push(`/edit-trainig/${filteredTrain[0]._id}`);
+    this.props.getWorksInTraining(filteredTrain[0]._id);
+
   }else{
     this.props.history.push(`/list-of-workouts/${date}`)
   }
@@ -89,6 +92,7 @@ Dashboard.propTypes ={
   trainigs:PropTypes.array.isRequired,
   getAllTrainigs:PropTypes.func.isRequired,
   setVisiblePage: PropTypes.func.isRequired,
+  getWorksInTraining:PropTypes.func.isRequired,
   displayPage:PropTypes.string.isRequired
 }
 
@@ -101,5 +105,5 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, {getAllTrainigs, setVisiblePage }) (Dashboard);
+export default connect(mapStateToProps, {getAllTrainigs, setVisiblePage,getWorksInTraining }) (Dashboard);
 

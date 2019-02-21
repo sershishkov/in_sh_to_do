@@ -75,6 +75,11 @@ const uuidv1 = require('uuid/v1');
   }
  }
  createWorkout = ()=>{ 
+
+  if(!(this.state.name_exercise && this.state.repeats && this.state.quantity)){
+    return;
+  }
+
    const findName = this.state.name_exercise; 
    const allExerc = this.props.typeExers;   
    const link = `/edit-trainig/${this.props.match.params.id}`; 
@@ -111,8 +116,8 @@ const uuidv1 = require('uuid/v1');
           description="Please Create workout" /> 
         </Grid>
 
-        <Grid  className="Card-body CreateWorkoutsInTraining-wrap" container direction="row" justify="space-between" >
-          <Grid item xs={4}>
+        <Grid  className="Card-body CreateWorkoutsInTraining-wrap" container direction="row" justify="space-between" spacing={Number(30)} >
+          <Grid item xs={3} container  direction="row" justify="center" alignItems="center">
             <Select 
             name="name_exercise"
             onChange={this.onChange.bind(this)}
@@ -126,7 +131,7 @@ const uuidv1 = require('uuid/v1');
               ))} 
             </Select>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} container  direction="row" justify="center" alignItems="center">
             <TextField 
             label="Repeats"
             className="TextField"
@@ -137,7 +142,7 @@ const uuidv1 = require('uuid/v1');
             onChange={this.onChange.bind(this)}
             /> 
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} container  direction="row" justify="center" alignItems="center">
               <TextField 
               label="Quantity"
               className="TextField"
@@ -147,10 +152,10 @@ const uuidv1 = require('uuid/v1');
               value={this.state.quantity}
               onChange={this.onChange.bind(this)}/>
           </Grid>
-          <Grid item xs={2}>
-            <Grid>{this.state.measure}</Grid>
+          <Grid item xs={2} container  direction="row" justify="center" alignItems="center">
+            <Grid container  direction="row" justify="center" alignItems="center">{this.state.measure}</Grid>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} container  direction="row" justify="center" alignItems="center">
             <Button variant="contained"              
               className={classNames(classes.root)} 
               onClick={this.createWorkout}>

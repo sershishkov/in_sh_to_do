@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { swapWorkoutUp, swapWorkoutDown, deleteWorkout, getWorksInTraining, clearAllWorkouts} from '../../actions/workoutActions';
+import { swapWorkoutUp, swapWorkoutDown, deleteWorkout, getWorksInTraining, clearAllWorkouts,addArrayOfWorkouts} from '../../actions/workoutActions';
 import { updateOneTrainig, getTrainingById} from '../../actions/trainigAction';
 import { setVisiblePage } from '../../actions/displayPageActions';
 
@@ -34,22 +34,14 @@ const styles = {
 const uuidv1 = require('uuid/v1');
 
  class EditTrainig extends Component {
-  componentDidMount(){    
-    const { id } = this.props.match.params;     
-    this.props.getTrainingById(id); 
 
-    this.props.setVisiblePage("EditTrainig");
-
-  }
   
-  componentWillReceiveProps(nextProps) {  
-    if(this.props.oneTrainig !== nextProps.oneTrainig){
-      this.setState({
-        oneTrainig:nextProps.oneTrainig
-      })     
-    }   
-  }
+componentWillMount(){
+  const { id } = this.props.match.params;     
+  this.props.getTrainingById(id); 
   
+  this.props.setVisiblePage("EditTrainig");
+} 
 
   swapUp = (workData,index) =>{
     this.props.swapWorkoutUp(workData,index);
@@ -87,6 +79,7 @@ const uuidv1 = require('uuid/v1');
   }
   render() {
     const {works} = this.props;
+    
     const { classes } = this.props;
     const displayWorks = (
     <List>     
@@ -95,7 +88,7 @@ const uuidv1 = require('uuid/v1');
         return (       
        <ListItem key={uuidv1()}>
           <Grid container direction="row" justify="flex-start">
-            <Grid item xs={5}>{item.name_exercise}</Grid>
+            <Grid item xs={5}>{item.name_exercise}</Grid>           
             <Grid item xs={1}>{item.repeats}</Grid>
             <Grid item xs={1}>{item.quantity}</Grid>
             <Grid item xs={1}>
@@ -160,8 +153,7 @@ const uuidv1 = require('uuid/v1');
                 <Grid>
                     <Button 
                     component={Link} 
-                    to={`/create-workout-in-training/${this.props.match.params.id}`}
-                    // color="primary"
+                    to={`/create-workout-in-training/${this.props.match.params.id}`}                    
                     className={classNames(classes.root)}
                     variant="contained" >
                        Create workout
@@ -172,10 +164,11 @@ const uuidv1 = require('uuid/v1');
                   {displayWorks}
                 </Grid>
                 <Grid>
-                  <Button variant="contained" 
-                  // color="primary" 
+                  <Button variant="contained"                  
                   className={classNames(classes.root)}
-                  onClick={this.updateTraining}>
+                  onClick={this.updateTraining}
+                  disabled={this.props.works.length<1}
+                  >
                   Update training
                   </Button>
                 </Grid> 
@@ -200,13 +193,14 @@ EditTrainig.propTypes ={
   deleteWorkout:PropTypes.func.isRequired,
   getWorksInTraining:PropTypes.func.isRequired,
   clearAllWorkouts:PropTypes.func.isRequired,
+  addArrayOfWorkouts:PropTypes.func.isRequired,
 
   setVisiblePage: PropTypes.func.isRequired,
   displayPage:PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
-
+   
   return {
     oneTrainig: state.trainigs.oneTrainig,
     works: state.workouts.workouts,
@@ -221,4 +215,5 @@ export default  withStyles(styles)(connect(mapStateToProps,
       deleteWorkout,
       getWorksInTraining,
       clearAllWorkouts,
-      setVisiblePage } )(EditTrainig));
+      setVisiblePage,
+      addArrayOfWorkouts } )(EditTrainig));

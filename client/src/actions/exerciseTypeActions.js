@@ -1,12 +1,17 @@
-import axios from 'axios';
-import {   GET_ERRORS, GET_ALL_EXERCISE_TYPE, DELETE_ONE_TYPE_EXERCISE, GET_ONE_EXERCISE_TYPE,UPDATE_ONE_EXERCISE_TYPE } from './types';
-
+import axios from "axios";
+import {
+  GET_ERRORS,
+  GET_ALL_EXERCISE_TYPE,
+  DELETE_ONE_TYPE_EXERCISE,
+  GET_ONE_EXERCISE_TYPE,
+  UPDATE_ONE_EXERCISE_TYPE
+} from "./types";
 
 // Create Exercise
 export const createExerciseType = (exercData, history) => dispatch => {
   axios
-    .post('/api/exercise', exercData)
-    .then(res => history.push('/list-of-type-exercise'))
+    .post("/api/exercise", exercData)
+    .then(res => history.push("/list-of-type-exercise"))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -17,13 +22,12 @@ export const createExerciseType = (exercData, history) => dispatch => {
 
 export const getAllExercisesTypes = () => dispatch => {
   axios
-    .get('/api/exercise')
-    .then(exerscises =>{
-      // console.log(exerscises.data);
+    .get("/api/exercise")
+    .then(exerscises => {
       dispatch({
         type: GET_ALL_EXERCISE_TYPE,
         payload: exerscises.data
-      })
+      });
     })
     .catch(err =>
       dispatch({
@@ -33,14 +37,15 @@ export const getAllExercisesTypes = () => dispatch => {
     );
 };
 
-export const deleteExerciseType = (id) => dispatch => {
+export const deleteExerciseType = id => dispatch => {
   axios
     .delete(`/api/exercise/${id}`)
     .then(res =>
       dispatch({
-      type: DELETE_ONE_TYPE_EXERCISE,
-      payload: id
-    }) )
+        type: DELETE_ONE_TYPE_EXERCISE,
+        payload: id
+      })
+    )
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -49,15 +54,14 @@ export const deleteExerciseType = (id) => dispatch => {
     );
 };
 
-export const getTypeExersById = (id) => dispatch => {
+export const getTypeExersById = id => dispatch => {
   axios
     .get(`/api/exercise/${id}`)
-    .then(exerscise =>{
-      // console.log(exerscises.data);
+    .then(exerscise => {
       dispatch({
         type: GET_ONE_EXERCISE_TYPE,
         payload: exerscise.data
-      })
+      });
     })
     .catch(err =>
       dispatch({
@@ -68,14 +72,13 @@ export const getTypeExersById = (id) => dispatch => {
 };
 export const updateTypeExers = (oneTypeExers, history) => dispatch => {
   axios
-    .put(`/api/exercise/${oneTypeExers.id}`,oneTypeExers)
-    .then(type =>{
-      // console.log(exerscises.data);
+    .put(`/api/exercise/${oneTypeExers.id}`, oneTypeExers)
+    .then(type => {
       dispatch({
         type: UPDATE_ONE_EXERCISE_TYPE,
         payload: type.data
-      })
-      history.push('/list-of-type-exercise');
+      });
+      history.push("/list-of-type-exercise");
     })
     .catch(err =>
       dispatch({

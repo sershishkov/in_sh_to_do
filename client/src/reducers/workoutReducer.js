@@ -1,4 +1,4 @@
-import { GET_ALL_WORKOUTS,ADD_ONE_WORKOUT, SWAP_WORKOUT_UP, SWAP_WORKOUT_DOWN, DELETE_WORKOUT, GET_ONE_WORKOUT,UPDATE_ONE_WORKOUT,GET_WORKS_IN_TRAINING, CLEAR_ALL_WORKS } from '../actions/types';
+import { GET_ALL_WORKOUTS,ADD_ONE_WORKOUT, SWAP_WORKOUT_UP, SWAP_WORKOUT_DOWN, DELETE_WORKOUT, GET_ONE_WORKOUT,UPDATE_ONE_WORKOUT,GET_WORKS_IN_TRAINING, CLEAR_ALL_WORKS, ADD_ARRAY_OF_WORKOUTS } from '../actions/types';
 
 const initialState = {
   workouts: [],
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default function(state = initialState, action) { 
-  // console.log(action.payload)  ;
+
   switch (action.type) {
     case GET_ALL_WORKOUTS:
       return {
@@ -24,6 +24,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         workouts: [...state.workouts, action.payload],
+        
+      };
+      case ADD_ARRAY_OF_WORKOUTS:
+      return {
+        ...state,
+        workouts: [...state.workouts, ...action.payload],
         
       };
 

@@ -34,7 +34,8 @@ const styles = {
   this_errors:{
     color:'red',
     fontSize:'10px'
-  }
+  },
+  
 };
 
  class NewTypeExercise extends Component {
@@ -58,8 +59,7 @@ const styles = {
   }
 
 
-   onChange(e) {
-    // console.log(e.target.name);
+   onChange(e) {    
     this.setState({ [e.target.name]: e.target.value });
   }
   onSubmit =(e) =>{
@@ -97,7 +97,7 @@ const styles = {
           <FormControl onSubmit={this.onSubmit.bind(this)} className="FormControl FormControl__NewTypeExercise">
           
             <Grid container  direction="row" justify="space-between" alignItems="center" className="NewTypeExercise--create ">
-              <Grid item xs={4}>                
+              <Grid container  direction="row" justify="center" alignItems="center" item xs={4} >                
                 <TextField                      
                   label="Exercise Name"
                   className="TextField"                 
@@ -109,7 +109,7 @@ const styles = {
                 />
                 {errors.name_exercise ? <Typography className={classNames(classes.this_errors)}>{errors.name_exercise}</Typography>:null}
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4}  container  direction="row" justify="center" alignItems="center" >
               <Select
               name='meauserement'
               onChange={this.onChange.bind(this)}
@@ -119,7 +119,7 @@ const styles = {
               >
                             
                     <MenuItem value="0"><em> choose measuerement</em></MenuItem>
-                    <MenuItem value="kilograms"> kilograms</MenuItem>
+                    <MenuItem value="kg"> kg</MenuItem>
                     <MenuItem value="metres"> metres</MenuItem>
                     <MenuItem value="time"> time</MenuItem>
                     <MenuItem value="times"> times</MenuItem>
@@ -127,9 +127,8 @@ const styles = {
                 <FormHelperText>Choose measuerement</FormHelperText> 
                 {errors.meauserement ? <Typography className={classNames(classes.this_errors)}>{errors.meauserement}</Typography>:null}               
               </Grid>
-              <Grid item xs={4}>
-                <Button variant="contained" 
-                  // color="primary"
+              <Grid item xs={4} container  direction="row" justify="center" alignItems="center" >
+                <Button variant="contained"                   
                   className={classNames(classes.root)} 
                   onClick={this.onSubmit}>
                   Create Exercise

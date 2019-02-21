@@ -66,7 +66,9 @@ getWorksIntrain= (id)=>{
                       <Grid item xs={3}>
                         <Button component={Link} 
                         to={`/edit-trainig/${trainig._id}`} color="primary"
-                         variant="contained" onClick={()=>this.getWorksIntrain(trainig._id)}>
+                         variant="contained" 
+                         onClick={()=>this.getWorksIntrain(trainig._id)}
+                         >
                         <i className="material-icons">border_color</i> train
                       </Button>
                       </Grid>

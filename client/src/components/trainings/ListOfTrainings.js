@@ -88,8 +88,8 @@ getWorksIntrain= (id)=>{
                             return(
                                 <ListItem key={typeExer._id}> 
                                 <Grid container direction="row" justify="space-between">                       
-                                  <Grid item xs={3}>{typeExer.name_exercise}{' '}</Grid>
-                                  <Grid item xs={3}>{typeExer.meauserement}{' '}</Grid>
+                                  <Grid item xs={3}>{typeExer.exercise_ID.name_exercise}{' '}</Grid>
+                                  <Grid item xs={3}>{typeExer.exercise_ID.meauserement}{' '}</Grid>
                                   <Grid item xs={3}>Repeats:{typeExer.repeats}{' '}</Grid>
                                   <Grid item xs={3}>Quantity:{typeExer.quantity}{' '}</Grid>
                                 </Grid>

@@ -109,25 +109,7 @@ const styles = {
             </Button>
           </ListItem>
 
-          {/* <ListItem>
-            <Button 
-            component={Link} 
-            to="/dashboard" 
-            className= {displayPage === "EditTypeExercise"? classNames(classes.activePage):classNames(classes.root)}      
-            variant="contained">
-               <i className="material-icons">reorder</i>{' '}Edit Types Exercise
-            </Button>
-          </ListItem> */}
-
-        <ListItem>
-          <Button 
-          component={Link} 
-          to="/new-type-exercise"
-          className= {displayPage === "NewTypeExercise"? classNames(classes.activePage):classNames(classes.root)}  
-          variant="contained">
-           <i className="material-icons">reorder</i>{' '}New Types Exercise
-          </Button>
-        </ListItem>
+          
           
           <ListItem>
             <Button 

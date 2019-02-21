@@ -11,6 +11,7 @@ export const getAllTrainigs = () => dispatch => {
   axios
     .get("/api/workout")
     .then(trainings => {
+      console.log(trainings.data)
       dispatch({
         type: GET_ALL_TRAINIGS,
         payload: trainings.data

@@ -23,6 +23,7 @@ router.get('/',passport.authenticate('jwt', { session: false }),
       .populate('exercise_in.exercise_ID')//Показываем поля из связанной таблицы "exercises" 
 
       .then(works =>{
+        // console.log(works);
         res.json(works);
       })
   }

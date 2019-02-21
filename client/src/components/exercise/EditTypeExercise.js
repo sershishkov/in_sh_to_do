@@ -109,7 +109,7 @@ const styles = {
               className={classNames(classes.select)}          
               >                            
                     <MenuItem value="0"><em> choose measuerement</em></MenuItem>
-                    <MenuItem value="kilograms"> kilograms</MenuItem>
+                    <MenuItem value="kg"> kg</MenuItem>
                     <MenuItem value="metres"> metres</MenuItem>
                     <MenuItem value="time"> time</MenuItem>
                     <MenuItem value="times"> times</MenuItem>
